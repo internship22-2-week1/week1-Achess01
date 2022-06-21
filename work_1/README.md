@@ -51,5 +51,5 @@ else
 fi
 ```
 
-![cuarto](./cuarto.jpeg)
-![quinto](./quinto.jpeg)
+![cuarto](./cuarto.png)
+![quinto](./quinto.png)
