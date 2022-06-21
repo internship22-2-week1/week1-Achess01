@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME=${1:-"proyecto"}
-MESSAGE=${2:-"Mensaje"}
+read  -p 'Introduzca el mensaje> ' MESSAGE
 CSS="body{
         background-color: #2b388f;
         display: grid;
