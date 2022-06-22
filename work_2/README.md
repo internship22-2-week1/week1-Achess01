@@ -16,7 +16,7 @@
     - Restar la cantidad de botellas en el inventario
     - Agregar las botellas a la entrega.
     - Restar la cantidad requerida por el cliente
-
+- Si la cantidad requerida por el cliente, al final de ejecutar todo, es mayor a 0 quiere decir que no se puede dar la cantidad requerida.
 ```
 BOTELLA{
   CAPACIDAD
@@ -35,6 +35,11 @@ Por cada BOTELLA_ACTUAL EN CAPACIDAD_DE_BOTELLAS:
     entrega = BOTELLA(botellas_final, BOTELLA_ACTUAL.CAPACIDAD)
     ENTREGA.AGREGAR(entrega)
     COMPRA_ML = COMPRA_ML - (botellas_final * BOTELLA_ACTUAL.CAPACIDAD)
+
+SI COMPRA_ML ES 0:
+  Entregar botellas
+SINO:
+  No se pueden entregar
 
 ```
 ### 2)
