@@ -12,7 +12,7 @@
 - Por cada botella calcular
   - Si la cantidad requerida es mayor a 0
     - Calcular la cantidad de botellas haciendo una división entre la cantidad requerida y la capacidad de la botella
-    - Si el resultado de esa división es mayor a la cantidad de botellas de la capacidad evaluada entonces se toman todas las botellas, sino se toman solo las necesarias
+    - Si el resultado de esa división es mayor a la cantidad de botellas de la capacidad evaluada entonces se toman todas las botellas, sino se toman solo las necesarias    
     - Restar la cantidad de botellas en el inventario
     - Agregar las botellas a la entrega.
     - Restar la cantidad requerida por el cliente
@@ -31,17 +31,25 @@ Por cada BOTELLA_ACTUAL EN CAPACIDAD_DE_BOTELLAS:
       botellas_final = BOTELLA_ACTUAL.CANTIDAD
     SINO
       botellas_final = cantidad
-    BOTELLA_ACTUAL.CANTIDAD = BOTELLA_ACTUAL.CANTIDAD - botellas_final
-    entrega = BOTELLA(botellas_final, BOTELLA_ACTUAL.CAPACIDAD)
-    ENTREGA.AGREGAR(entrega)
-    COMPRA_ML = COMPRA_ML - (botellas_final * BOTELLA_ACTUAL.CAPACIDAD)
+    SI botellas_final > 0:
+      BOTELLA_ACTUAL.CANTIDAD = BOTELLA_ACTUAL.CANTIDAD - botellas_final
+      entrega = BOTELLA(botellas_final, BOTELLA_ACTUAL.CAPACIDAD)
+      ENTREGA.AGREGAR(entrega)
+      COMPRA_ML = COMPRA_ML - (botellas_final * BOTELLA_ACTUAL.CAPACIDAD)
 
 SI COMPRA_ML ES 0:
   Entregar botellas
 SINO:
-  No se pueden entregar
+  No se pueden entregar exacto
 
 ```
+| Cliente     | CompraML  | Cantidad botellas |
+| ----------- | --------- | ---------|
+|   Paco     |          450ml| 1 de 350ml; 1 de 100ml|
+|   Hugo     |         185ml| 1 de 100ml; sobran 85ml|
+|   Luis     |          940ml|1 de 500ml; 1 de 350ml; sobran 90ml |
+
+
 ### 2)
 **Pasos**
 - Recibir los archivos (FILES)
